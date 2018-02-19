@@ -2,6 +2,7 @@
 import argparse
 import json
 import re
+import sys
 
 def calcular_sentimiento(texto_un_tweet, valores):
     valor_sentimiento = 0
@@ -32,5 +33,8 @@ parser.add_argument('--sentimientos', dest='sentimientos', action='store',
 parser.add_argument('--tweets', dest='tweets', action='store',
                     help='ruta completa al fichero de tweets')
 
+if len(sys.argv)==1:
+    parser.print_help()
+    sys.exit(1)
 argumentos = parser.parse_args()
 main(argumentos)
